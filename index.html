@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>THE CENTER — Кав’ярня</title>
+
+  <!-- Логотип у вкладці -->
+  <link rel="icon" type="image/png" href="https://scontent-iev1-1.cdninstagram.com/v/t51.2885-19/486555667_510804075414733_7978108263479957941_n.jpg" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111;
+      --card: rgba(255, 255, 255, 0.9);
+      --accent: #3e2f28;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #f0f0f0;
+      --card: rgba(30, 30, 30, 0.9);
+      --accent: #a67c52;
+    }
+
+    body.accessibility {
+      --bg: #000;
+      --text: #ff0;
+      --card: #000;
+      --accent: #0f0;
+      font-size: 1.2em;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.ibb.co/VY3HD9qw/photo-2025-06-19-12-09-55.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .theme-box-fixed {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+      background-color: var(--card);
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      padding: 10px 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-box-fixed strong {
+      margin-left: 5px;
+    }
+
+    .theme-box-fixed button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    header {
+      background: var(--accent);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #2e1e18;
+      padding: 10px;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fef1dc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .menu-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .menu-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .menu-grid-3 p, .menu-grid-2 p {
+      margin: 5px 0;
+    }
+
+    .contacts a {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--accent);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .menu-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="theme-box-fixed">
+    🎨 <strong>Вибір кольору:</strong>
+    <button onclick="setTheme('')">День</button>
+    <button onclick="setTheme('dark')">Ніч</button>
+    <button onclick="setTheme('accessibility')">Контраст</button>
+  </div>
+
+  <header>
+    <h1>THE CENTER</h1>
+    <p>твоя атмосфера кави</p>
+  </header>
+
+  <nav>
+    <a href="#menu">Меню</a>
+    <a href="#contact">Контакти</a>
+    <a href="#map">Мапа</a>
+  </nav>
+
+  <section id="menu" class="card">
+    <h2>Гарячі напої</h2>
+    <div class="menu-grid-3">
+      <div><p>Еспресо — 25₴</p><p>Капучино — 35₴</p><p>Лате — 40₴</p></div>
+      <div><p>Флет-вайт — 45₴</p><p>Раф — 50₴</p><p>Какао — 30₴</p></div>
+      <div><p>Матча лате — 50₴</p><p>Шоколад — 40₴</p><p>Чай — 20–50₴</p></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Холодні напої</h2>
+    <div class="menu-grid-3">
+      <div><p>Айс лате — 60₴</p><p>Лимонад — 55₴</p><p>Джміль — 55₴</p></div>
+      <div><p>Блакитна лагуна — 55₴</p><p>Мохіто — 55₴</p><p>Bubble tea — 60₴</p></div>
+      <div><p>Матча Orange — 65₴</p><p>Коктейлі — 60₴</p><p>Тонік — 55₴</p></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Хот-доги / бургери</h2>
+    <div class="menu-grid-2">
+      <div><p>Хот-дог — 60₴</p><p>Бургер курячий — 80₴</p><p>Бургер яловичий — 80₴</p></div>
+      <div><p>Багет "Гамма" — 80₴</p><p>Картопля фрі — 50₴</p><p>Нагетси — 55/75₴</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="card contacts">
+    <h2>Контакти</h2>
+    <a href="tel:+380951193719">📞 +38 095 119 3719</a>
+    <a href="https://www.instagram.com/_the_center2.0/" target="_blank">📸 Instagram</a>
+  </section>
+
+  <section id="map" class="card">
+    <h2>Локація</h2>
+    <a href="https://www.google.com/maps/place/The+center/@47.6865124,31.2777287,17z" target="_blank">
+      📍 Переглянути на Google Maps
+    </a>
+  </section>
+
+  <footer>
+    &copy; 2025 THE CENTER | З любов’ю до кави ☕
+  </footer>
+
+  <script>
+    function setTheme(mode) {
+      document.body.className = mode;
+    }
+  </script>
+</body>
+</html>
