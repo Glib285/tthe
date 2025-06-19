@@ -6,7 +6,7 @@
   <title>THE CENTER — Кав’ярня</title>
 
   <!-- Логотип у вкладці -->
-  <link rel="icon" type="image/png" href="https://scontent-iev1-1.cdninstagram.com/v/t51.2885-19/486555667_510804075414733_7978108263479957941_n.jpg" />
+  <link rel="icon" type="image/png" href="https://i.ibb.co/pv2QDb3Y/logo.png" />
 
   <style>
     :root {
@@ -40,35 +40,6 @@
       transition: all 0.3s ease;
     }
 
-    .theme-box-fixed {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 9999;
-      background-color: var(--card);
-      border: 2px solid var(--accent);
-      border-radius: 12px;
-      padding: 10px 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .theme-box-fixed strong {
-      margin-left: 5px;
-    }
-
-    .theme-box-fixed button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     header {
       background: var(--accent);
       color: white;
@@ -89,6 +60,34 @@
       color: #fef1dc;
       text-decoration: none;
       font-weight: bold;
+    }
+
+    .theme-switcher {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px;
+      text-align: center;
+    }
+
+    .theme-switcher button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .color-label {
+      background: #f6e7d8;
+      color: #4b2e1e;
+      padding: 8px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+      border: 2px solid #d2b79c;
     }
 
     section {
@@ -150,6 +149,24 @@
       }
     }
 
+    @media (max-width: 600px) {
+      .theme-switcher {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .theme-switcher button,
+      .theme-switcher .color-label {
+        width: 100%;
+        text-align: center;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
     @media (max-width: 480px) {
       .menu-grid-3 {
         grid-template-columns: 1fr;
@@ -159,13 +176,6 @@
 </head>
 
 <body>
-  <div class="theme-box-fixed">
-    🎨 <strong>Вибір кольору:</strong>
-    <button onclick="setTheme('')">День</button>
-    <button onclick="setTheme('dark')">Ніч</button>
-    <button onclick="setTheme('accessibility')">Контраст</button>
-  </div>
-
   <header>
     <h1>THE CENTER</h1>
     <p>твоя атмосфера кави</p>
@@ -176,6 +186,13 @@
     <a href="#contact">Контакти</a>
     <a href="#map">Мапа</a>
   </nav>
+
+  <div class="theme-switcher">
+    <span class="color-label">🎨 Вибір кольору</span>
+    <button onclick="setTheme('')">День</button>
+    <button onclick="setTheme('dark')">Ніч</button>
+    <button onclick="setTheme('accessibility')">Контраст</button>
+  </div>
 
   <section id="menu" class="card">
     <h2>Гарячі напої</h2>
