@@ -63,31 +63,47 @@
     }
 
     .theme-switcher {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px;
       text-align: center;
+      position: relative;
+      margin: 20px;
     }
 
-    .theme-switcher button {
+    .theme-menu-toggle {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .theme-options {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--card);
+      border: 2px solid var(--accent);
+      border-radius: 10px;
+      padding: 10px;
+      z-index: 100;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .theme-options button {
       background: var(--accent);
       color: white;
       border: none;
       padding: 8px 15px;
       border-radius: 5px;
+      margin: 5px;
       cursor: pointer;
     }
 
-    .color-label {
-      background: #f6e7d8;
-      color: #4b2e1e;
-      padding: 8px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      border: 2px solid #d2b79c;
+    .theme-options.show {
+      display: block;
     }
 
     section {
@@ -151,14 +167,12 @@
 
     @media (max-width: 600px) {
       .theme-switcher {
-        flex-direction: column;
-        align-items: stretch;
+        margin: 15px;
       }
 
-      .theme-switcher button,
-      .theme-switcher .color-label {
-        width: 100%;
-        text-align: center;
+      .theme-options {
+        top: 60px;
+        width: 90%;
       }
 
       nav {
@@ -188,10 +202,12 @@
   </nav>
 
   <div class="theme-switcher">
-    <span class="color-label">🎨 Вибір кольору</span>
-    <button onclick="setTheme('')">День</button>
-    <button onclick="setTheme('dark')">Ніч</button>
-    <button onclick="setTheme('accessibility')">Контраст</button>
+    <button onclick="toggleThemeMenu()" class="theme-menu-toggle">⚙️ Змінити колір</button>
+    <div id="theme-options" class="theme-options">
+      <button onclick="setTheme('')">☀️ День</button>
+      <button onclick="setTheme('dark')">🌙 Ніч</button>
+      <button onclick="setTheme('accessibility')">🔲 Контраст</button>
+    </div>
   </div>
 
   <section id="menu" class="card">
@@ -240,7 +256,21 @@
   <script>
     function setTheme(mode) {
       document.body.className = mode;
+      document.getElementById("theme-options").classList.remove("show");
     }
+
+    function toggleThemeMenu() {
+      document.getElementById("theme-options").classList.toggle("show");
+    }
+
+    // Закрити меню при кліку поза ним
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('theme-options');
+      const button = document.querySelector('.theme-menu-toggle');
+      if (!menu.contains(e.target) && !button.contains(e.target)) {
+        menu.classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>
